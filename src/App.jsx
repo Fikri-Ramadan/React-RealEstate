@@ -1,5 +1,17 @@
+import './App.css';
+import Header from './components/header/Header';
+import Hero from './components/hero/Hero';
+
 function App() {
-  return <h1>Hi mom</h1>;
+  return (
+    <div>
+      <div className="container">
+        <div className='white-blur' />
+        <Header />
+        <Hero />
+      </div>
+    </div>
+  );
 }
 
 export default App;
