@@ -7,8 +7,8 @@
 }
 
 .white-blur {
-  width: 20rem;
-  height: 20rem;
+  width: 15rem;
+  height: 15rem;
   background: rgba(255, 255, 255, 0.5);
   filter: blur(100px);
   position: absolute;
