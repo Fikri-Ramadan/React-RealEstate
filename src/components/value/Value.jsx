@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionItemHeading,
   AccordionItemPanel,
-  AccordionItemState,
 } from 'react-accessible-accordion';
 import {
   MdOutlineArrowDropDown,
@@ -14,7 +13,6 @@ import {
 import 'react-accessible-accordion/dist/fancy-example.css';
 import './Value.css';
 import data from '../../utils/accordion';
-import { useState } from 'react';
 
 const Value = () => {
   return (
@@ -41,24 +39,15 @@ const Value = () => {
             preExpanded={[0]}
           >
             {data.map((item, i) => {
-              const [className, setClassName] = useState(null);
-
               return (
                 <AccordionItem
-                  className={`accordionItem ${className}`}
+                  className={`accordionItem`}
                   uuid={i}
                   key={i}
+                  activeClassName="accordionItem expanded"
                 >
                   <AccordionItemHeading>
                     <AccordionItemButton className="accordionButton">
-                      <AccordionItemState>
-                        {({ expanded }) =>
-                          expanded
-                            ? setClassName('expanded')
-                            : setClassName('collapsed')
-                        }
-                      </AccordionItemState>
-
                       <div className="icon">{item.icon}</div>
                       <span className="primaryText">{item.heading}</span>
                       <div className="icon">
