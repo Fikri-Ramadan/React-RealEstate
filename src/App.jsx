@@ -1,6 +1,7 @@
 import './App.css';
 import Companies from './components/companies/Companies';
 import Contact from './components/contact/Contact';
+import Footer from './components/footer/Footer';
 import GetStarted from './components/getStarted/GetStarted';
 import Header from './components/header/Header';
 import Hero from './components/hero/Hero';
@@ -20,6 +21,7 @@ function App() {
       <Value />
       <Contact />
       <GetStarted />
+      <Footer />
     </div>
   );
 }

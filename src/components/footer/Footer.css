@@ -1,0 +1,25 @@
+.f-container {
+  display: flex;
+  justify-content: space-between;
+  border-top: 0.5px solid rgba(0, 0, 0, 0.148);
+}
+
+.f-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.f-menu {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  font-weight: 500;
+}
+
+.f-menu span {
+  cursor: pointer;
+}
