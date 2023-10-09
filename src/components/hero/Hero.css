@@ -6,6 +6,7 @@
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
+  margin: calc(50vh - 19rem) auto !important;
   padding: 1rem;
 }
 
