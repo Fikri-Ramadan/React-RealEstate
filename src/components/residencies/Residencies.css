@@ -80,3 +80,15 @@
 .r-buttons > :nth-child(2) {
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
 }
+
+@media (max-width: 768px) {
+  .r-head {
+    align-items: center;
+  }
+  
+  .r-buttons {
+    justify-content: center;
+    position: initial;
+    margin-top: 1rem;
+  }
+}

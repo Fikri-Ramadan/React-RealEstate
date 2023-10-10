@@ -12,7 +12,7 @@
 }
 
 .f-menu {
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,4 +22,22 @@
 
 .f-menu span {
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .f-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .f-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .f-right {
+    align-items: center;
+  }
 }

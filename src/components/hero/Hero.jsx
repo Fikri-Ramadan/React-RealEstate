@@ -1,5 +1,6 @@
 import CountUp from 'react-countup';
 import { HiLocationMarker } from 'react-icons/hi';
+import { motion } from 'framer-motion';
 import './Hero.css';
 
 const Hero = () => {
@@ -9,9 +10,16 @@ const Hero = () => {
         <div className="hero-left">
           <div className="hero-title">
             <div className="orange-circle" />
-            <h1>
+            <motion.h1
+              initial={{ y: '2rem', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 2,
+                type: 'ease-in',
+              }}
+            >
               Discover <br /> Most Suitable <br /> Property
-            </h1>
+            </motion.h1>
           </div>
           <div className="secondaryText hero-desc">
             <span>Find a variety of properties that suit you very easily</span>
@@ -21,14 +29,13 @@ const Hero = () => {
           <div className="search-bar">
             <HiLocationMarker color="var(--blue)" size={25} />
             <input type="text" />
-            <button className='button'>Search</button>
+            <button className="button">Search</button>
           </div>
 
           <div className="stat-container">
             <div className="stat">
               <span>
-                <CountUp start={8800} end={9000} duration={4} /> {' '}
-                <span>+</span>
+                <CountUp start={8800} end={9000} duration={4} /> <span>+</span>
               </span>
               <span className="secondaryText">Premium Products</span>
             </div>
@@ -47,9 +54,17 @@ const Hero = () => {
           </div>
         </div>
         <div className="hero-right">
-          <div className="image-container">
+          <motion.div
+            initial={{ x: '7rem', opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              duration: 2,
+              type: 'ease-in',
+            }}
+            className="image-container"
+          >
             <img src="./hero-image.png" alt="" />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

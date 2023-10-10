@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="paddings innerWidth f-container">
         <div className="f-left">
           <div className="logo">
-            <img src="./logo2.png" alt="" width={250} />
+            <img src="./logo2.png" alt="" width={120} />
           </div>
           <span className="secondaryText">
             Our vision is to make all people <br />

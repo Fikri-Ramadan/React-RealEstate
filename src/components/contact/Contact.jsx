@@ -31,14 +31,14 @@ const Contact = () => {
               <div className="contact-card">
                 <div className="card-header">
                   <div className="icon">
-                    <MdCall size={25} />
+                    <BsFillChatDotsFill size={25} />
                   </div>
                   <div className="detail">
-                    <span className="primaryText">Call</span>
+                    <span className="primaryText">Chat</span>
                     <span className="secondaryText">021 123 456 789</span>
                   </div>
                 </div>
-                <div className="button">Call Now</div>
+                <div className="button">Chat Now</div>
               </div>
             </div>
 
@@ -46,26 +46,26 @@ const Contact = () => {
               <div className="contact-card">
                 <div className="card-header">
                   <div className="icon">
-                    <MdCall size={25} />
+                    <BsFillChatDotsFill size={25} />
                   </div>
                   <div className="detail">
-                    <span className="primaryText">Call</span>
+                    <span className="primaryText">Video Call</span>
                     <span className="secondaryText">021 123 456 789</span>
                   </div>
                 </div>
-                <div className="button">Call Now</div>
+                <div className="button">Video Call Now</div>
               </div>
               <div className="contact-card">
                 <div className="card-header">
                   <div className="icon">
-                    <MdCall size={25} />
+                    <HiChatBubbleBottomCenter size={25} />
                   </div>
                   <div className="detail">
-                    <span className="primaryText">Call</span>
+                    <span className="primaryText">Message</span>
                     <span className="secondaryText">021 123 456 789</span>
                   </div>
                 </div>
-                <div className="button">Call Now</div>
+                <div className="button">Message Now</div>
               </div>
             </div>
           </div>
