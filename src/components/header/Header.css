@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: space-between;
   color: var(--secondary);
+  height: 20vh;
 }
 
 .h-menu {
@@ -18,11 +19,11 @@
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .h-container {
-    /* padding: 1rem !important; */
-  }
+.open-menu {
+  right: 4rem !important;
+}
 
+@media screen and (max-width: 768px) {
   .menu-icon {
     display: block;
   }
@@ -30,16 +31,16 @@
   .h-menu {
     position: absolute;
     top: 4rem;
-    right: 4rem;
+    right: -100%;
     flex-direction: column;
+    align-items: center;
+    padding: 3rem;
     gap: 2rem;
     background: white;
     color: var(--black);
     font-weight: 500;
     border-radius: 10px;
     transition: all 300ms ease-in;
-    align-items: flex-start;
-    padding: 3rem;
     box-shadow: 8px 4px 4px rgba(0, 0, 0, 0.05);
     z-index: 99;
   }

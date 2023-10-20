@@ -1,5 +1,5 @@
 .container {
-  height: 100vh;
+  height: 81vh;
   background-color: var(--black);
   overflow-x: clip;
   position: relative;
@@ -14,6 +14,17 @@
   position: absolute;
   border-radius: 100%;
   z-index: -1;
+}
+
+.wrapper {
+  background: white;
+}
+
+.loading-container {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 1024px) {

@@ -40,4 +40,8 @@
   .f-right {
     align-items: center;
   }
+
+  .f-menu {
+    font-size: 0.75rem;
+  }
 }

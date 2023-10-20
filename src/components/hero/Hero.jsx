@@ -1,7 +1,7 @@
 import CountUp from 'react-countup';
-import { HiLocationMarker } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 import './Hero.css';
+import SearchBar from '../searchBar/SearchBAr';
 
 const Hero = () => {
   return (
@@ -26,11 +26,7 @@ const Hero = () => {
             <span>Forget all difficulties in finding a residency of you</span>
           </div>
 
-          <div className="search-bar">
-            <HiLocationMarker color="var(--blue)" size={25} />
-            <input type="text" />
-            <button className="button">Search</button>
-          </div>
+          <SearchBar />
 
           <div className="stat-container">
             <div className="stat">

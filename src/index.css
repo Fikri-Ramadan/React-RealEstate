@@ -103,6 +103,10 @@ a {
   transform: scale(1.1);
 }
 
+.wrapper {
+  background: white;
+}
+
 @media (min-width: 1536px) {
   .innerWidth {
     max-width: 1280px;
