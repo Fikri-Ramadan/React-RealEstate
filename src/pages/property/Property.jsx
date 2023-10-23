@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { AiFillHeart, AiTwotoneCar } from 'react-icons/ai';
 import { FaShower } from 'react-icons/fa';
 import { MdMeetingRoom, MdLocationPin } from 'react-icons/md';
+import Map from '../../components/map/Map';
 
 const Property = () => {
   const location = useLocation();
@@ -54,6 +55,7 @@ const Property = () => {
           <img src={residency?.image} alt="" />
         </div>
         <div className="property-details">
+          {/* left side*/}
           <div className="left">
             <div className="head">
               <div className="primaryText">{residency?.title}</div>
@@ -94,7 +96,14 @@ const Property = () => {
             <button className="button">Book your visit</button>
           </div>
 
-          <div className="right">right</div>
+          {/* right side */}
+          <div className="map">
+            <Map
+              address={residency?.address}
+              city={residency?.city}
+              country={residency?.country}
+            />
+          </div>
         </div>
       </div>
     </div>
