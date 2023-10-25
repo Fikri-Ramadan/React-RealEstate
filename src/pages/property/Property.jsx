@@ -43,7 +43,6 @@ const Property = () => {
   }
 
   const { residency } = data;
-  console.log(residency);
 
   return (
     <div className="wrapper">

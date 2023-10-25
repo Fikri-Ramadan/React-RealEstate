@@ -8,10 +8,11 @@ const Map = ({ address, city, country }) => {
       zoom={10}
       scrollWheelZoom={false}
       style={{
-        height: '40vh',
+        height: '50vh',
         width: '100%',
         marginTop: '20px',
         zIndex: '0',
+        borderRadius: '10px'
       }}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
