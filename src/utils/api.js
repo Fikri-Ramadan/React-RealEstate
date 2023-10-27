@@ -17,6 +17,7 @@ export const getAllProperties = async () => {
 
     return res.data;
   } catch (error) {
+    console.log(error.message);
     toast.error('something went wrong');
     throw new Error(error.message);
   }
@@ -33,6 +34,18 @@ export const getProperty = async (id) => {
     return res.data;
   } catch (error) {
     console.log(error.message);
+    toast.error('something went wrong');
+    throw new Error(error.message);
+  }
+};
+
+export const createUser = async (email) => {
+  try {
+    const res = await api.post('/user', { email });
+    return res.data;
+  } catch (error) {
+    console.log(error.message);
+    toast.error('something went wrong');
     throw new Error(error.message);
   }
 };
