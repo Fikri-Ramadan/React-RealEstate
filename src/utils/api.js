@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASEURL,
+  baseURL: `${import.meta.env.VITE_API_BASEURL}/api/v1`,
 });
 
 export const getAllProperties = async () => {
