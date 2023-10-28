@@ -39,9 +39,13 @@ export const getProperty = async (id) => {
   }
 };
 
-export const createUser = async (email) => {
+export const createUser = async (email, token) => {
   try {
-    const res = await api.post('/user', { email });
+    const res = await api.post(
+      '/user',
+      { email },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
     return res.data;
   } catch (error) {
     console.log(error.message);

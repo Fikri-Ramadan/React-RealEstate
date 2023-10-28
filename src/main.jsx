@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       authorizationParams={{
         redirect_uri: import.meta.env.VITE_BASEURL,
       }}
-      audience={import.meta.env.VITE_API_BASEURL}
+      audience="http://localhost:8000"
       scope="openid profile email"
     >
       <MantineProvider>
