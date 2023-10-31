@@ -1,16 +1,19 @@
-import { getProperty } from '../../utils/api';
+import { getProperty, removeBookedVisit } from '../../utils/api';
 import './Property.css';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { PuffLoader } from 'react-spinners';
 import { useLocation } from 'react-router-dom';
 import { AiFillHeart, AiTwotoneCar } from 'react-icons/ai';
 import { FaShower } from 'react-icons/fa';
 import { MdMeetingRoom, MdLocationPin } from 'react-icons/md';
 import Map from '../../components/map/Map';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import useAuthCheck from '../../hooks/useAuthCheck';
 import BookingModal from '../../components/bookingModal/BookingModal';
 import { useAuth0 } from '@auth0/auth0-react';
+import UserDetailsContext from '../../context/UserDetailsContext';
+import { Button } from '@mantine/core';
+import { toast } from 'react-toastify';
 
 const Property = () => {
   const location = useLocation();
@@ -19,6 +22,22 @@ const Property = () => {
   const [isModalOpened, setModealOpened] = useState(false);
   const { validateLogin } = useAuthCheck();
   const { user } = useAuth0();
+  const {
+    userDetails: { token, bookings },
+    setUserDetails,
+  } = useContext(UserDetailsContext);
+
+  const { mutate: cancelBooking, isLoading: cancelling } = useMutation({
+    mutationFn: () => removeBookedVisit(user?.email, id, token),
+    onSuccess: () => {
+      setUserDetails((prev) => ({
+        ...prev,
+        bookings: prev.bookings.filter((booking) => booking.id !== id),
+      }));
+
+      toast.success('Booking cancelled', { position: 'bottom-right' });
+    },
+  });
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['property', id],
@@ -99,14 +118,32 @@ const Property = () => {
             </div>
 
             {/* booking button */}
-            <button
-              className="button"
-              onClick={() => {
-                validateLogin() && setModealOpened(true);
-              }}
-            >
-              Book your visit
-            </button>
+            {bookings?.map((booking) => booking.id).includes(id) ? (
+              <>
+                <Button
+                  fullWidth
+                  variant="outline"
+                  color="red"
+                  onClick={() => cancelBooking()}
+                  disabled={cancelling}
+                >
+                  Cancel Booking
+                </Button>
+                <span>
+                  Your visit already booked for date{'  '}
+                  {bookings?.filter((booking) => booking.id === id)[0].date}
+                </span>
+              </>
+            ) : (
+              <button
+                className="button"
+                onClick={() => {
+                  validateLogin() && setModealOpened(true);
+                }}
+              >
+                Book your visit
+              </button>
+            )}
 
             <BookingModal
               opened={isModalOpened}

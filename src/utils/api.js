@@ -78,17 +78,14 @@ export const bookingVisit = async (email, propertyId, date, token) => {
 
 export const removeBookedVisit = async (email, propertyId, token) => {
   try {
-    await api.delete(
-      `/user/bookVisit/${propertyId}`,
-      {
-        email,
+    await api.delete(`/user/bookVisit/${propertyId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+      data: {
+        email: email,
+      },
+    });
   } catch (error) {
     console.log(error.message);
     toast.error('something went wrong');
