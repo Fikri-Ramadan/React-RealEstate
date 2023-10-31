@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Property from './pages/property/Property';
 import UserDetailsContext from './context/UserDetailsContext';
+import { ScrollToTop } from './utils/common';
 
 function App() {
   const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ function App() {
     <UserDetailsContext.Provider value={{ userDetails, setUserDetails }}>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
+        <ScrollToTop />
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route element={<Layout />}>
