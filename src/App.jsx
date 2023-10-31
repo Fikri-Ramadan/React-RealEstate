@@ -18,6 +18,7 @@ function App() {
     bookings: [],
     token: null,
   });
+  console.log(userDetails)
 
   return (
     <UserDetailsContext.Provider value={{ userDetails, setUserDetails }}>

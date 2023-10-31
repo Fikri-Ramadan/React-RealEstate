@@ -7,11 +7,18 @@ import { AiFillHeart, AiTwotoneCar } from 'react-icons/ai';
 import { FaShower } from 'react-icons/fa';
 import { MdMeetingRoom, MdLocationPin } from 'react-icons/md';
 import Map from '../../components/map/Map';
+import { useState } from 'react';
+import useAuthCheck from '../../hooks/useAuthCheck';
+import BookingModal from '../../components/bookingModal/BookingModal';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Property = () => {
   const location = useLocation();
 
   const id = location.pathname.split('/').slice(-1)[0];
+  const [isModalOpened, setModealOpened] = useState(false);
+  const { validateLogin } = useAuthCheck();
+  const { user } = useAuth0();
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['property', id],
@@ -92,7 +99,21 @@ const Property = () => {
             </div>
 
             {/* booking button */}
-            <button className="button">Book your visit</button>
+            <button
+              className="button"
+              onClick={() => {
+                validateLogin() && setModealOpened(true);
+              }}
+            >
+              Book your visit
+            </button>
+
+            <BookingModal
+              opened={isModalOpened}
+              setModalOpened={setModealOpened}
+              propertyId={id}
+              email={user?.email}
+            />
           </div>
 
           {/* right side */}
