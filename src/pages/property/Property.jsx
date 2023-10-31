@@ -3,7 +3,7 @@ import './Property.css';
 import { useMutation, useQuery } from 'react-query';
 import { PuffLoader } from 'react-spinners';
 import { useLocation } from 'react-router-dom';
-import { AiFillHeart, AiTwotoneCar } from 'react-icons/ai';
+import { AiTwotoneCar } from 'react-icons/ai';
 import { FaShower } from 'react-icons/fa';
 import { MdMeetingRoom, MdLocationPin } from 'react-icons/md';
 import Map from '../../components/map/Map';
@@ -14,6 +14,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import UserDetailsContext from '../../context/UserDetailsContext';
 import { Button } from '@mantine/core';
 import { toast } from 'react-toastify';
+import Heart from '../../components/heart/Heart';
 
 const Property = () => {
   const location = useLocation();
@@ -75,7 +76,7 @@ const Property = () => {
       <div className="paddings innerWidth property-container">
         <div className="property-image">
           <div className="like">
-            <AiFillHeart size={24} color="white" />
+            <Heart id={id} />
           </div>
           <img src={residency?.image} alt="" />
         </div>

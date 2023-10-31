@@ -18,7 +18,6 @@ export const getAllProperties = async () => {
 
     return res.data;
   } catch (error) {
-    console.log(error.message);
     toast.error('something went wrong');
     throw new Error(error.message);
   }
@@ -34,7 +33,6 @@ export const getProperty = async (id) => {
 
     return res.data;
   } catch (error) {
-    console.log(error.message);
     toast.error('something went wrong');
     throw new Error(error.message);
   }
@@ -49,7 +47,6 @@ export const createUser = async (email, token) => {
     );
     return res.data;
   } catch (error) {
-    console.log(error.message);
     toast.error('something went wrong');
     throw new Error(error.message);
   }
@@ -58,7 +55,7 @@ export const createUser = async (email, token) => {
 export const bookingVisit = async (email, propertyId, date, token) => {
   try {
     await api.post(
-      `/user/bookVisit/${propertyId}`,
+      `/user/bookvisit/${propertyId}`,
       {
         email,
         date: dayjs(date).format('DD/MM/YYYY'),
@@ -70,7 +67,6 @@ export const bookingVisit = async (email, propertyId, date, token) => {
       }
     );
   } catch (error) {
-    console.log(error.message);
     toast.error('something went wrong');
     throw new Error(error.message);
   }
@@ -78,7 +74,7 @@ export const bookingVisit = async (email, propertyId, date, token) => {
 
 export const removeBookedVisit = async (email, propertyId, token) => {
   try {
-    await api.delete(`/user/bookVisit/${propertyId}`, {
+    await api.delete(`/user/bookvisit/${propertyId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -87,7 +83,25 @@ export const removeBookedVisit = async (email, propertyId, token) => {
       },
     });
   } catch (error) {
-    console.log(error.message);
+    toast.error('something went wrong');
+    throw new Error(error.message);
+  }
+};
+
+export const toggleFavourite = async (email, id, token) => {
+  try {
+    await api.put(
+      `/user/togglefavourite/${id}`,
+      {
+        email,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  } catch (error) {
     toast.error('something went wrong');
     throw new Error(error.message);
   }
