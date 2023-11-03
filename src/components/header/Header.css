@@ -15,6 +15,10 @@
   gap: 2rem;
 }
 
+.h-add-property {
+  cursor: pointer;
+}
+
 .menu-icon {
   display: none;
 }

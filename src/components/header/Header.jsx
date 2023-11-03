@@ -5,16 +5,20 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import ProfileMenu from '../profileMenu/ProfileMenu';
-
-// const getMenuStyles = (menuOpen) => {
-//   if (document.documentElement.clientWidth <= 800) {
-//     return { right: !menuOpen && '-100%' };
-//   }
-// };
+import useAuthCheck from '../../hooks/useAuthCheck';
+import AddPropertyModal from '../addPropertyModal/AddPropertyModal';
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
   const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+  const { validateLogin } = useAuthCheck();
+
+  const handleAddPropertyClick = () => {
+    if (validateLogin()) {
+      setModalOpen(true);
+    }
+  };
 
   return (
     <section className="h-wrapper">
@@ -26,10 +30,14 @@ const Header = () => {
         </div>
 
         <OutsideClickHandler onOutsideClick={() => setOpen(false)}>
-          {/* <div className="h-menu" style={getMenuStyles(isOpen)}> */}
           <div className={`h-menu ${isOpen && 'open-menu'}`}>
             <NavLink to="/properties">Properties</NavLink>
             <a href="mailto:fikriramadan.tech@gmail.com">Contact</a>
+
+            {/* add property */}
+            <div onClick={handleAddPropertyClick} className='h-add-property'>Add Property</div>
+            <AddPropertyModal opened={isModalOpen} setOpened={setModalOpen} />
+
             {isAuthenticated ? (
               <ProfileMenu user={user} logout={logout} />
             ) : (
