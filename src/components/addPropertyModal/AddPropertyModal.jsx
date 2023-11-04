@@ -2,6 +2,7 @@ import { Button, Container, Group, Modal, Stepper } from '@mantine/core';
 import { useState } from 'react';
 import AddLocation from '../addLocation/AddLocation';
 import { useAuth0 } from '@auth0/auth0-react';
+import UploadImage from '../uploadImage/UploadImage';
 
 const AddPropertyModal = ({ opened, setOpened }) => {
   const [active, setActive] = useState(0);
@@ -49,8 +50,13 @@ const AddPropertyModal = ({ opened, setOpened }) => {
               setPropertyDetails={setPropertyDetails}
             />
           </Stepper.Step>
-          <Stepper.Step label="Second step" description="Verify email">
-            Step 2 content: Verify email
+          <Stepper.Step label="Upload" description="Property Image">
+            <UploadImage
+              propertyDetails={propertyDetails}
+              setPropertyDetails={setPropertyDetails}
+              nextStep={nextStep}
+              prevStep={prevStep}
+            />
           </Stepper.Step>
           <Stepper.Step label="Final step" description="Get full access">
             Step 3 content: Get full access

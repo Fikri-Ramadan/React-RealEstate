@@ -1,0 +1,65 @@
+import { useEffect, useRef, useState } from 'react';
+import './UploadImage.css';
+import { AiOutlineCloudUpload } from 'react-icons/ai';
+import { Button, Group } from '@mantine/core';
+
+const UploadImage = ({
+  properyDetails,
+  setPropertyDetails,
+  nextStep,
+  prevStep,
+}) => {
+  const [imageURL, setImageURL] = useState(null);
+  const cloudinaryRef = useRef();
+  const widgetRef = useRef();
+
+  const handleNext = () => {
+    setPropertyDetails((prev) => ({ ...prev, image: imageURL }));
+    nextStep();
+  };
+
+  useEffect(() => {
+    cloudinaryRef.current = window.cloudinary;
+    widgetRef.current = cloudinaryRef.current.createUploadWidget(
+      {
+        cloudName: import.meta.env.VITE_CLOUDINARY_NAME,
+        uploadPreset: import.meta.env.VITE_CLOUDINARY_PRESET,
+        maxFiles: 1,
+      },
+      (err, result) => {
+        if (result.event === 'success') {
+          setImageURL(result.info.secure_url);
+        }
+      }
+    );
+  }, []);
+
+  return (
+    <div className="upload-wrapper">
+      {!imageURL ? (
+        <div className="upload-zone" onClick={() => widgetRef.current?.open()}>
+          <AiOutlineCloudUpload size={50} color={'grey'} />
+          <span>Upload Image</span>
+        </div>
+      ) : (
+        <div
+          className="uploaded-image"
+          onClick={() => widgetRef.current?.open()}
+        >
+          <img src={imageURL} alt="" />
+        </div>
+      )}
+
+      <Group justify="center" mb={'xl'}>
+        <Button variant="default" onClick={prevStep}>
+          Back
+        </Button>
+        <Button onClick={handleNext} disabled={!imageURL}>
+          Next
+        </Button>
+      </Group>
+    </div>
+  );
+};
+
+export default UploadImage;
