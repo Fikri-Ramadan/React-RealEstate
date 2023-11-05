@@ -17,6 +17,7 @@
   align-items: center;
   border: 2px dashed grey;
   color: grey;
+  cursor: pointer;
 }
 
 .uploaded-image {

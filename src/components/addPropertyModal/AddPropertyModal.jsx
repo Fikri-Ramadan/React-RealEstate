@@ -3,6 +3,7 @@ import { useState } from 'react';
 import AddLocation from '../addLocation/AddLocation';
 import { useAuth0 } from '@auth0/auth0-react';
 import UploadImage from '../uploadImage/UploadImage';
+import BasicDetails from '../basicDetails/BasicDetails';
 
 const AddPropertyModal = ({ opened, setOpened }) => {
   const [active, setActive] = useState(0);
@@ -58,8 +59,16 @@ const AddPropertyModal = ({ opened, setOpened }) => {
               prevStep={prevStep}
             />
           </Stepper.Step>
-          <Stepper.Step label="Final step" description="Get full access">
-            Step 3 content: Get full access
+          <Stepper.Step label="Details" description="Property Descriptions">
+            <BasicDetails
+              propertyDetails={propertyDetails}
+              setPropertyDetails={setPropertyDetails}
+              nextStep={nextStep}
+              prevStep={prevStep}
+            />
+          </Stepper.Step>
+          <Stepper.Step>
+            asd
           </Stepper.Step>
           <Stepper.Completed>
             Completed, click back button to get to previous step

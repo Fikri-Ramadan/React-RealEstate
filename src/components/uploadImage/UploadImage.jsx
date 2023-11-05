@@ -4,17 +4,21 @@ import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { Button, Group } from '@mantine/core';
 
 const UploadImage = ({
-  properyDetails,
+  propertyDetails,
   setPropertyDetails,
   nextStep,
   prevStep,
 }) => {
-  const [imageURL, setImageURL] = useState(null);
+  const [imageURL, setImageURL] = useState(propertyDetails?.image);
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
 
+
   const handleNext = () => {
-    setPropertyDetails((prev) => ({ ...prev, image: imageURL }));
+    setPropertyDetails((prev) => ({
+      ...prev,
+      image: imageURL,
+    }));
     nextStep();
   };
 
