@@ -1,0 +1,36 @@
+.container {
+  height: 86vh;
+  padding-top: 2rem;
+  background-color: var(--black);
+  overflow-x: clip;
+  position: relative;
+  z-index: 1;
+}
+
+.white-blur {
+  width: 15rem;
+  height: 15rem;
+  background: rgba(255, 255, 255, 0.5);
+  filter: blur(100px);
+  position: absolute;
+  border-radius: 100%;
+  z-index: -1;
+}
+
+.wrapper {
+  background: white;
+}
+
+.loading-container {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    height: auto;
+    padding-top: 0;
+  }
+}

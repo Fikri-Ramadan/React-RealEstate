@@ -1,0 +1,47 @@
+.f-container {
+  display: flex;
+  justify-content: space-between;
+  border-top: 0.5px solid rgba(0, 0, 0, 0.148);
+}
+
+.f-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.f-menu {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  font-weight: 500;
+}
+
+.f-menu span {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .f-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .f-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .f-right {
+    align-items: center;
+  }
+
+  .f-menu {
+    font-size: 0.75rem;
+  }
+}
