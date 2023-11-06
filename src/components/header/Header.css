@@ -29,6 +29,10 @@
     display: block;
   }
 
+  .h-container {
+    height: 120px;
+  }
+
   .h-menu {
     position: absolute;
     top: 4rem;

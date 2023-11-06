@@ -31,15 +31,28 @@ const Header = () => {
 
         <OutsideClickHandler onOutsideClick={() => setOpen(false)}>
           <div className={`h-menu ${isOpen && 'open-menu'}`}>
-            <NavLink to="/properties">Properties</NavLink>
-            <a href="mailto:fikriramadan.tech@gmail.com">Contact</a>
+            <NavLink to="/properties" onClick={() => setOpen(false)}>
+              Properties
+            </NavLink>
+            <a
+              href="mailto:fikriramadan.tech@gmail.com"
+              onClick={() => setOpen(false)}
+            >
+              Contact
+            </a>
 
             {/* add property */}
-            <div onClick={handleAddPropertyClick} className='h-add-property'>Add Property</div>
+            <div onClick={handleAddPropertyClick} className="h-add-property">
+              Add Property
+            </div>
             <AddPropertyModal opened={isModalOpen} setOpened={setModalOpen} />
 
             {isAuthenticated ? (
-              <ProfileMenu user={user} logout={logout} />
+              <ProfileMenu
+                user={user}
+                logout={logout}
+                onClick={() => setOpen(false)}
+              />
             ) : (
               <button className="button" onClick={() => loginWithRedirect()}>
                 Login
