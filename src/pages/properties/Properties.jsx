@@ -1,7 +1,7 @@
 import SearchBar from '../../components/searchBar/SearchBar';
 import useProperties from '../../hooks/useProperties';
 import { PuffLoader } from 'react-spinners';
-import './properties.css';
+import './Properties.css';
 import PropertyCard from '../../components/propertyCard/PropertyCard';
 import { useState } from 'react';
 
