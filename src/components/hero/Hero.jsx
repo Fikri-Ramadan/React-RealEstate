@@ -1,7 +1,7 @@
 import CountUp from 'react-countup';
 import { motion } from 'framer-motion';
 import './Hero.css';
-import SearchBar from '../searchBar/SearchBAr';
+import SearchBar from '../searchBar/SearchBar';
 
 const Hero = () => {
   return (

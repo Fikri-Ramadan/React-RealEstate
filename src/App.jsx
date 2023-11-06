@@ -11,6 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Property from './pages/property/Property';
 import UserDetailsContext from './context/UserDetailsContext';
 import { ScrollToTop } from './utils/common';
+import Bookings from './pages/bookings/Bookings';
+import Favourites from './pages/favourites/Favourites';
 
 function App() {
   const queryClient = new QueryClient();
@@ -24,7 +26,7 @@ function App() {
     <UserDetailsContext.Provider value={{ userDetails, setUserDetails }}>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-        <ScrollToTop />
+          <ScrollToTop />
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route element={<Layout />}>
@@ -33,6 +35,8 @@ function App() {
                   <Route index element={<Properties />} />
                   <Route path=":propertyId" element={<Property />} />
                 </Route>
+                <Route path="/bookings" element={<Bookings />} />
+                <Route path="/favourites" element={<Favourites />} />
               </Route>
             </Routes>
           </Suspense>
