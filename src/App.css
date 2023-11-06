@@ -1,5 +1,6 @@
 .container {
-  height: 81vh;
+  height: 86vh;
+  padding-top: 2rem;
   background-color: var(--black);
   overflow-x: clip;
   position: relative;
@@ -30,5 +31,6 @@
 @media (max-width: 1024px) {
   .container {
     height: auto;
+    padding-top: 0;
   }
 }

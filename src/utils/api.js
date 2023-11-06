@@ -150,3 +150,18 @@ export const getAllBookings = async (email, token) => {
     throw new Error(error.message);
   }
 };
+
+export const createProperty = async (propertyDetails, token) => {
+  try {
+    await api.post(
+      '/residency',
+      {
+        ...propertyDetails
+      },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+  } catch (error) {
+    toast.error('something went wrong');
+    throw new Error(error.message);
+  }
+};

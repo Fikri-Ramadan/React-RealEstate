@@ -25,7 +25,7 @@ const BasicDetails = ({
       title: (value) => validateString(value),
       description: (value) => validateString(value),
       price: (value) =>
-        value <= 1000 ? 'value must be greater than $999' : null,
+        value < 1000 ? 'value must be greater than $999' : null,
     },
   });
 
