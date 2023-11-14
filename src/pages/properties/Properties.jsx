@@ -4,9 +4,11 @@ import { PuffLoader } from 'react-spinners';
 import './Properties.css';
 import PropertyCard from '../../components/propertyCard/PropertyCard';
 import { useState } from 'react';
+import Paginations from '../../components/pagination/Paginations';
 
 const Properties = () => {
-  const { data, isLoading, isError } = useProperties();
+  const [activePage, setPage] = useState(1);
+  const { data, isLoading, isError, refetch } = useProperties(activePage);
   const [filter, setFilter] = useState('');
 
   if (isLoading) {
@@ -33,7 +35,7 @@ const Properties = () => {
     );
   }
 
-  const { residencies } = data;
+  const { residencies, totalPage } = data;
 
   return (
     <div className="wrapper">
@@ -51,6 +53,12 @@ const Properties = () => {
               <PropertyCard card={residency} key={i} />
             ))}
         </div>
+        <Paginations
+          totalPage={totalPage}
+          activePage={activePage}
+          setPage={setPage}
+          refetch={refetch}
+        />
       </div>
     </div>
   );

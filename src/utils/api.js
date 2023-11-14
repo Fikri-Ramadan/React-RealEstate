@@ -6,9 +6,9 @@ const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_BASEURL}/api/v1`,
 });
 
-export const getAllProperties = async () => {
+export const getAllProperties = async (page) => {
   try {
-    const res = await api.get('/residency', {
+    const res = await api.get(`/residency?page=${page || 1}`, {
       timeout: 10 * 1000,
     });
 
@@ -156,7 +156,7 @@ export const createProperty = async (propertyDetails, token) => {
     await api.post(
       '/residency',
       {
-        ...propertyDetails
+        ...propertyDetails,
       },
       { headers: { Authorization: `Bearer ${token}` } }
     );

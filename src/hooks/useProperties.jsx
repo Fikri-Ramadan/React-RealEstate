@@ -1,11 +1,11 @@
 import { useQuery } from 'react-query';
 import { getAllProperties } from '../utils/api';
 
-const useProperties = () => {
+const useProperties = (page) => {
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: 'allProperties',
-    queryFn: getAllProperties,
-    refetchOnWindowFocus: false,
+    queryFn: () => getAllProperties(page),
+    refetchOnWindowFocus: true,
   });
 
   return {
