@@ -26,7 +26,7 @@ const Hero = () => {
             <span>Forget all difficulties in finding a residency of you</span>
           </div>
 
-          <SearchBar />
+          {/* <SearchBar  /> */}
 
           <div className="stat-container">
             <div className="stat">

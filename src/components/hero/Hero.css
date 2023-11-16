@@ -15,7 +15,9 @@
 .hero-left {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  justify-content: flex-end;
+  gap: 3rem;
+  height: 25rem;
 }
 
 .hero-title {
@@ -93,6 +95,10 @@
     flex-direction: column;
     align-items: center;
     margin: 2rem auto 0 auto;
+  }
+
+  .hero-left {
+    height: auto;
   }
 
   .stat-container {

@@ -9,9 +9,13 @@ const SearchBar = ({ filter, setFilter }) => {
         type="text"
         placeholder="Search by title/city/country..."
         value={filter}
-        onChange={(e) => setFilter(e.target.value)}
+        onChange={(e) => {
+          setFilter(e.target.value);
+        }}
       />
-      <button className="button">Search</button>
+      <button className="button" onClick={() => setFilter('')}>
+        Reset
+      </button>
     </div>
   );
 };

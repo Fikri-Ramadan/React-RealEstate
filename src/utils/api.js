@@ -6,11 +6,14 @@ const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_BASEURL}/api/v1`,
 });
 
-export const getAllProperties = async () => {
+export const getAllProperties = async (page, search) => {
   try {
-    const res = await api.get('/residency', {
-      timeout: 10 * 1000,
-    });
+    const res = await api.get(
+      `/residency?page=${page || 1}&search=${search || ''}`,
+      {
+        timeout: 10 * 1000,
+      }
+    );
 
     if (res.status === 400 || res.status === 500) {
       throw res.data;
@@ -156,7 +159,7 @@ export const createProperty = async (propertyDetails, token) => {
     await api.post(
       '/residency',
       {
-        ...propertyDetails
+        ...propertyDetails,
       },
       { headers: { Authorization: `Bearer ${token}` } }
     );

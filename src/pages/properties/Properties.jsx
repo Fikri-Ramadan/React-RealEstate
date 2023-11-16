@@ -3,11 +3,25 @@ import useProperties from '../../hooks/useProperties';
 import { PuffLoader } from 'react-spinners';
 import './Properties.css';
 import PropertyCard from '../../components/propertyCard/PropertyCard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Paginations from '../../components/pagination/Paginations';
 
 const Properties = () => {
-  const { data, isLoading, isError } = useProperties();
+  const [activePage, setPage] = useState(1);
   const [filter, setFilter] = useState('');
+
+  const { data, isLoading, isError, refetch } = useProperties({
+    page: activePage,
+    search: filter,
+  });
+
+  useEffect(() => {
+    const timeoutId = setTimeout(async () => {
+      refetch();
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [filter]);
 
   if (isLoading) {
     return (
@@ -33,24 +47,23 @@ const Properties = () => {
     );
   }
 
-  const { residencies } = data;
+  const { residencies, totalPage } = data;
 
   return (
     <div className="wrapper">
       <div className="innerWidth paddings properties-container">
         <SearchBar filter={filter} setFilter={setFilter} />
         <div className="properties-card-container">
-          {residencies
-            ?.filter(
-              (residency) =>
-                residency.title.toLowerCase().includes(filter.toLowerCase()) ||
-                residency.city.toLowerCase().includes(filter.toLowerCase()) ||
-                residency.country.toLowerCase().includes(filter.toLowerCase())
-            )
-            .map((residency, i) => (
-              <PropertyCard card={residency} key={i} />
-            ))}
+          {residencies?.map((residency, i) => (
+            <PropertyCard card={residency} key={i} />
+          ))}
         </div>
+        <Paginations
+          totalPage={totalPage}
+          activePage={activePage}
+          setPage={setPage}
+          refetch={refetch}
+        />
       </div>
     </div>
   );
