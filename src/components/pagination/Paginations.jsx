@@ -7,6 +7,7 @@ const Paginations = ({ totalPage, activePage, setPage, refetch }) => {
       value={activePage}
       onChange={async (page) => {
         await setPage(page);
+        window.scrollTo(0, 0);
         refetch();
       }}
     />
